@@ -15,7 +15,9 @@
 }
 
 html {
-	background: #b0c6e7;
+	background: radial-gradient(circle at 100% 100%, rgb(208, 214, 188) 0%, transparent 60%),
+	            radial-gradient(circle at 0% 100%, rgb(212, 169, 189) 0%, transparent 60%),
+	            rgb(135, 172, 199);
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
@@ -64,6 +66,14 @@ body {
 .footer {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	tap-highlight-color: rgba(0, 0, 0, 0);
+	background: #000000 !important;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 8px 0 10px 0;
+	box-sizing: border-box;
+	z-index: 100;
 }
 
 .arrow {
@@ -218,11 +228,15 @@ i.far {
 .notifications,
 .poslugi,
 .menulid {
-	min-height: 100%;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	perspective: 2000px;
+}
+
+.papage .header {
+	display: none;
 }
 
 .passport.is-flipped {
@@ -235,11 +249,23 @@ i.far {
 .notifications>div,
 .poslugi>div,
 .menulid>div {
-	flex: auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	width: 100%;
+}
+
+.papage {
+	justify-content: center !important;
+}
+
+.papage .swiper-container {
+	flex: none;
+}
+
+.papage .refresh {
+	flex: none;
+	margin-top: 24px;
 }
 
 .refresh {
@@ -258,11 +284,17 @@ i.far {
 }
 
 .front {
-	position: fixed;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 
 .back {
 	position: relative;
+	width: 100%;
+	height: 100%;
 	transform: rotateY(180deg);
 }
 
@@ -317,10 +349,19 @@ i.far {
 }
 
 .name {
-	font-size: 24px;
-	width: 1px;
+	font-size: 18px;
+	width: 140px;
+	line-height: 1.25;
 	margin: 16px;
+	margin-top: 24px;
 	margin-bottom: 24px;
+}
+
+.pssprt .name {
+	position: absolute;
+	bottom: 27px;
+	left: 0;
+	margin: 0 16px;
 }
 
 .razdel {
@@ -331,10 +372,9 @@ i.far {
 
 .image {
 	background-size: cover;
-	border-width: 2px;
-	border-style: solid;
-	border-color: rgb(176, 198, 231);
-	border-image: initial;
+	border: none;
+	outline: 2px solid #c8d0d8;
+	border-radius: 20px;
 	background-position: center center;
 	background-repeat: no-repeat;
 	width: 153px;
@@ -378,12 +418,27 @@ i.far {
 
 .content {
 	width: 340px;
-	box-shadow: rgba(0, 0, 0, 0.03) 0px 14px 28px, rgba(0, 0, 0, 0.05) 0px 12px 10px;
-	background: rgb(215, 227, 242);
-	border-radius: 8.5px;
+	box-shadow: none !important;
+	border-radius: 24px;
 	transition: .3s!important;
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
+}
+
+.content.front {
+	background: rgba(255, 255, 255, 0.45) !important;
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+}
+
+.content.back {
+	background: #ffffff !important;
+	backdrop-filter: none !important;
+	-webkit-backdrop-filter: none !important;
+}
+
+.passport.pssprt .content {
+	min-height: 500px;
 }
 
 .logos {
@@ -394,6 +449,7 @@ i.far {
 }
 
 .scanqr {
+	display: none !important;
 	background-image: url(qr.png?1);
 	background-size: contain;
 	background-position: center;
@@ -416,6 +472,7 @@ i.far {
 	justify-content: space-around;
 	align-items: center;
 	font-size: 11px;
+	color: #ffffff;
 }
 
 .ico {
@@ -424,7 +481,8 @@ i.far {
 	background-size: contain;
 	margin-right: auto;
 	margin-left: auto;
-	margin-bottom: 4px;
+	margin-bottom: 2px;
+	filter: brightness(0) invert(1) !important;
 }
 
 .zep {
@@ -689,6 +747,19 @@ i.far {
 	font-size: 30px;
 }
 
+.line {
+	position: relative;
+	overflow: hidden;
+}
+
+.pssprt .line {
+	background: linear-gradient(90deg, #B6EB9F, #9CCFCF);
+	position: absolute;
+	bottom: 110px;
+	left: 0;
+	width: 100%;
+}
+
 .platnik>.line {
 	background: linear-gradient(90deg, #B6EB9F, #9CCFCF);
 	margin-top: 53px;
@@ -696,18 +767,21 @@ i.far {
 	overflow: hidden;
 }
 
+.rf_title {
+	display: none !important;
+}
+
 .dit_dot {
 	width: 5px;
 	border-radius: 100px;
 	height: 5px;
-	background: black;
 	display: inline-block;
-	background: #7c8aa1;
+	background: rgba(255, 255, 255, 0.45);
 	transition: 0.2s;
 }
 
 .dit_dot.act {
-	background: black;
+	background: #ffffff;
 	width: 7px;
 	height: 7px;
 }
@@ -719,6 +793,7 @@ i.far {
 	justify-content: space-between;
 	width: 30px;
 	align-items: center;
+	margin: 28px auto 0 auto !important;
 }
 
 .rod_deskr {
@@ -821,9 +896,9 @@ background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAk8AAAUACAY
 	width: 28px;
 	height: 28px;
 	position: absolute;
-	z-index: -5;
-	margin-top: -56px;
-	margin-left: 296px;
+	z-index: 2;
+	right: 16px;
+	bottom: 24px;
 }
 
 .loader_line {

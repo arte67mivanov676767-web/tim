@@ -106,27 +106,18 @@ swiper.on('slideChange', function () {
 		$('.dit_dot').removeClass('act');
 		var sss = swiper.realIndex + 1;
 		$('.dit_dot:nth-child(' + sss + ')').addClass('act');
-
-		$('html').css('background', '#B3C4E3');
-		$('.content').css('background', '#D9E3F0');
 	}
 
 	if (swiper.realIndex == 1) {
 		$('.dit_dot').removeClass('act');
 		var sss = swiper.realIndex + 1;
 		$('.dit_dot:nth-child(' + sss + ')').addClass('act');
-
-		$('html').css('background', '#DAC8D7');
-		$('.content').css('background', '#EDE3EB');
 	}
 
 	if (swiper.realIndex == 2) {
 		$('.dit_dot').removeClass('act');
 		var sss = swiper.realIndex + 1;
 		$('.dit_dot:nth-child(' + sss + ')').addClass('act');
-
-		$('html').css('background', '#C9D8E7');
-		$('.content').css('background', '#E4ECF3');
 	}
 });
 
@@ -296,10 +287,4 @@ nlgi.addEventListener('click', function () {
 });
 
 
-isInWebAppiOS = (window.navigator.standalone === true);
-isInWebAppChrome = (window.matchMedia('(display-mode: standalone)').matches);
-
-if(isInWebAppiOS == false && isInWebAppChrome == false){
-	$('body').html('<div class="nonono">Нажмите по трем точкам в браузере и добавьте эту страницу на главный экран<br></div>');
-	$('body').addClass('nononopage');
-}
+// Проверка на веб-ярлык отключена для свободного доступа через браузер
